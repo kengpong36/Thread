@@ -55,7 +55,9 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
 
     }
 
- 
+    //Resoure ที่เกิดจากสร้างหน้า GUI โดยใช้ การ ลากวาง เช่น Label,Button ทุกอย่างจะถูก new 
+    //ที่ initComponents() เพื่อทำงาน เมื่อโปรแกรม เริ่มรัน
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -305,7 +307,7 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
 
     public void mouseReleased(java.awt.event.MouseEvent evt) {
     }// </editor-fold>//GEN-END:initComponents
-
+    //ทำเมื่อ คลิกปุ่ม Rob
     private void btn_banditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_banditMouseClicked
 
         if (statusBandit == "WakeUp") { //WakeUp , Sleep
