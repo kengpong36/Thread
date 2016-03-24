@@ -48,6 +48,7 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
 
     public ThreadGUI() {
         initComponents();
+
     }
 
     /**
@@ -344,7 +345,6 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
         T_Bandit = new Thif();
         T_Dog = new Dog();
         T_Polic = new Polic();
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
@@ -353,29 +353,21 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
             }
         });
 
-        while (!status) {
-
-            if (!T_Polic.isAlive()) {
-                T_Polic.start();
-            }
-            if (!T_Human.isAlive()) {
-                T_Human.start();
-            }
-            if (!T_Dog.isAlive()) {
-                T_Dog.start();
-                T_Dog.setPriority(4);
-            }
-            if (!T_Bandit.isAlive()) {
-                T_Bandit.start();
-                T_Bandit.setPriority(3);
-            }
-//            T_Polic.stop();
-//            T_Dog.stop();
-//            T_Human.stop();
-//            T_Bandit.stop();
-         
+        if (!T_Polic.isAlive()) {
+            T_Polic.start();
         }
-               System.out.println(T_Human.getState());
+        if (!T_Human.isAlive()) {
+            T_Human.start();
+        }
+        if (!T_Dog.isAlive()) {
+            T_Dog.start();
+            T_Dog.setPriority(4);
+        }
+        if (!T_Bandit.isAlive()) {
+            T_Bandit.start();
+            T_Bandit.setPriority(3);
+        }
+
     }
 
 
@@ -404,7 +396,7 @@ class Human extends Thread {
 
     public void run() {
 
-        while (this.isAlive() && !status) {
+        while (Thread.currentThread().isAlive() && !status) {
 
             try {
 
@@ -414,15 +406,16 @@ class Human extends Thread {
                 System.out.println(statusHuman);
                 status_H = new JLabel();
                 image = new JLabel();
-                status_H.setText("WakeUp");
+                status_H.setText(statusHuman);
                 sleep(16000);
-
+                System.out.println(Thread.currentThread().getState());
                 System.out.println(i);
                 statusHuman = "Sleep";
                 picture = "sleep";
+                System.out.println(statusHuman);
                 status_H.setText(statusHuman);
                 image.setIcon(new ImageIcon(Base_Path + "sleep.png"));
-
+                sleep(8000);
             } catch (InterruptedException ex) {
                 statusHuman = "WakeUp";
                 picture = "wakeup";
@@ -440,7 +433,7 @@ class Dog extends Thread {
 
     public void run() {
 
-        while (this.isAlive() && !status) {
+        while (Thread.currentThread().isAlive() && !status) {
             try {
 
                 statusDog = "Sleep";
@@ -465,7 +458,7 @@ class Dog extends Thread {
                 image_Dog.setIcon(new javax.swing.ImageIcon(Base_Path + "dog_wakeUp.png"));
             }
         }
-                Thread.currentThread().stop();
+        Thread.currentThread().stop();
     }
 }
 
@@ -483,7 +476,7 @@ class Polic extends Thread {
             statusPolic = "Work";
             picture = "work";
             status_P.setText(statusPolic);
-            System.out.println(statusPolic);
+//            System.out.println(statusPolic);
             image_polic.setIcon(new javax.swing.ImageIcon(Base_Path + "work.png"));
             JOptionPane.showMessageDialog(null, "ตำรวจจับ", "Polic Dialog", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -494,7 +487,7 @@ class Thif extends Thread {
 
     public void run() {
 
-        while (this.isAlive()) {
+        while (Thread.currentThread().isAlive() && !status) {
             try {
 
                 statusBandit = "Sleep";
@@ -548,7 +541,6 @@ class Clock extends Thread {
                 }
                 day++;
                 date.setText(day + "");
-                System.out.println(day);
 
             }
         }
