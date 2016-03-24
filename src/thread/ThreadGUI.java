@@ -22,6 +22,7 @@ import static thread.ThreadGUI.status_D;
 import static thread.ThreadGUI.status_H;
 import static thread.ThreadGUI.status_P;
 import static thread.ThreadGUI.i;
+import static thread.ThreadGUI.day;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -29,6 +30,7 @@ import static thread.ThreadGUI.status;
 import static thread.ThreadGUI.time;
 import static java.lang.Thread.sleep;
 import static thread.ThreadGUI.date;
+import static java.lang.Thread.sleep;
 
 public class ThreadGUI extends javax.swing.JFrame implements MouseListener, ActionListener {
 
@@ -38,13 +40,14 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
     public static String statusPolic = "Stanby";
     public static String statusBandit = "Sleep";
     public static Boolean status = false;
-    public static Human T_Human;
-    public static Dog T_Dog;
-    public static Polic T_Polic;
-    public static Thif T_Bandit;
+    public static Human T_Human = new Human();
+    public static Dog T_Dog = new Dog();
+    public static Polic T_Polic = new Polic();
+    public static Thif T_Bandit = new Thif();
     public static String Base_Path = "C:\\Users\\Administrator\\Desktop\\System\\Thread\\res\\";
     public static Clock clock = new Clock();
     public static int i;
+    public static int day = 0;
 
     public ThreadGUI() {
         initComponents();
@@ -77,6 +80,7 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
         time = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
+        btnStop = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,7 +88,7 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255), 3));
         jPanel1.setForeground(new java.awt.Color(51, 51, 0));
 
-        image.setIcon(new javax.swing.ImageIcon(Base_Path+"\\wakeUp.png"));
+        image.setIcon(new javax.swing.ImageIcon(Base_Path+"\\home.jpeg"));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,14 +108,13 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
         );
 
         status_H.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        status_H.setText(statusHuman);
-        status_H.setToolTipText("");
+        status_H.setText("WakeUp");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255), 3));
         jPanel2.setForeground(new java.awt.Color(51, 51, 0));
 
-        image_Dog.setIcon(new javax.swing.ImageIcon(Base_Path+"\\dog_sleep.png"));
+        image_Dog.setIcon(new javax.swing.ImageIcon(Base_Path+"\\home.jpeg"));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -132,13 +135,12 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
 
         status_D.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         status_D.setText(statusDog);
-        status_D.setToolTipText("");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255), 3));
         jPanel3.setForeground(new java.awt.Color(51, 51, 0));
 
-        image_polic.setIcon(new javax.swing.ImageIcon(Base_Path+"\\stanby.png"));
+        image_polic.setIcon(new javax.swing.ImageIcon(Base_Path+"\\home.jpeg"));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -146,7 +148,7 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(image_polic, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                .addComponent(image_polic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -187,15 +189,13 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
                 .addComponent(btn_bandit))
         );
 
-        image_Bandit.setIcon(new javax.swing.ImageIcon(Base_Path +"bandit_sleep.png"));
+        image_Bandit.setIcon(new javax.swing.ImageIcon(Base_Path +"home.jpeg"));
 
         status_B.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        status_B.setText(statusBandit);
-        status_B.setToolTipText("");
+        status_B.setText("Sleep");
 
         status_P.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         status_P.setText(statusPolic);
-        status_P.setToolTipText("");
 
         btnStart.setText("Start");
         btnStart.addMouseListener(this);
@@ -209,69 +209,78 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
 
         date.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
 
+        btnStop.setText("Stop");
+        btnStop.addMouseListener(this);
+        btnStop.addActionListener(this);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(status_P, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(status_H, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(status_D, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(status_B, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(date))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(time)
-                .addGap(173, 173, 173)
-                .addComponent(btnStart)
-                .addGap(112, 112, 112))
+                    .addComponent(date)
+                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(status_P, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(status_H, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(time)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(btnStart)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnStop))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(status_D, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(status_B, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnStart)
-                            .addComponent(time)))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(date)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(date))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnStart)
+                            .addComponent(btnStop)
+                            .addComponent(time))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(status_D, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(status_H, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(status_D, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(status_H, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(status_P, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(status_B, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(status_P, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(status_B, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -286,6 +295,9 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
         else if (evt.getSource() == btnStart) {
             ThreadGUI.this.btnStartActionPerformed(evt);
         }
+        else if (evt.getSource() == btnStop) {
+            ThreadGUI.this.btnStopActionPerformed(evt);
+        }
     }
 
     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -294,6 +306,9 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
         }
         else if (evt.getSource() == btnStart) {
             ThreadGUI.this.btnStartMouseClicked(evt);
+        }
+        else if (evt.getSource() == btnStop) {
+            ThreadGUI.this.btnStopMouseClicked(evt);
         }
     }
 
@@ -311,7 +326,7 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
 
     private void btn_banditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_banditMouseClicked
 
-        if (statusBandit == "Sleep") { //WakeUp , Sleep
+        if (statusBandit == "WakeUp") { //WakeUp , Sleep
             try {
                 T_Bandit.interrupt();
                 status = true;
@@ -334,17 +349,36 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStartMouseClicked
+        if (i <= 0) {
+            clock.start();
+            T_Polic.start();
+            T_Human.start();
+            T_Dog.start();
+            T_Dog.setPriority(4);
+            T_Bandit.start();
+            T_Bandit.setPriority(3);
+            status = false;
+        } else {
+            JOptionPane.showMessageDialog(null, "Thread Running", "Thread Dialog", JOptionPane.WARNING_MESSAGE);
+        }
 
-        clock.start();
-        status = false;
 
     }//GEN-LAST:event_btnStartMouseClicked
 
+    private void btnStopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStopMouseClicked
+        clock.stop();
+        T_Bandit.stop();
+        T_Polic.stop();
+        T_Dog.stop();
+        T_Human.stop();
+    }//GEN-LAST:event_btnStopMouseClicked
+
+    private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnStopActionPerformed
+
     public static void main(String args[]) {
-        T_Human = new Human();
-        T_Bandit = new Thif();
-        T_Dog = new Dog();
-        T_Polic = new Polic();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
@@ -353,26 +387,12 @@ public class ThreadGUI extends javax.swing.JFrame implements MouseListener, Acti
             }
         });
 
-        if (!T_Polic.isAlive()) {
-            T_Polic.start();
-        }
-        if (!T_Human.isAlive()) {
-            T_Human.start();
-        }
-        if (!T_Dog.isAlive()) {
-            T_Dog.start();
-            T_Dog.setPriority(4);
-        }
-        if (!T_Bandit.isAlive()) {
-            T_Bandit.start();
-            T_Bandit.setPriority(3);
-        }
-
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnStart;
+    public static javax.swing.JButton btnStop;
     public static javax.swing.JButton btn_bandit;
     public static javax.swing.JLabel date;
     public static javax.swing.JLabel image;
@@ -400,19 +420,13 @@ class Human extends Thread {
 
             try {
 
-                System.out.println(i);
                 statusHuman = "WakeUp";
                 picture = "wakeup";
-                System.out.println(statusHuman);
-                status_H = new JLabel();
-                image = new JLabel();
+                image.setIcon(new ImageIcon(Base_Path + "wakeUp.png"));
                 status_H.setText(statusHuman);
                 sleep(16000);
-                System.out.println(Thread.currentThread().getState());
-                System.out.println(i);
                 statusHuman = "Sleep";
                 picture = "sleep";
-                System.out.println(statusHuman);
                 status_H.setText(statusHuman);
                 image.setIcon(new ImageIcon(Base_Path + "sleep.png"));
                 sleep(8000);
@@ -438,18 +452,14 @@ class Dog extends Thread {
 
                 statusDog = "Sleep";
                 picture = "dog_sleep";
-                status_D = new JLabel();
-                image_Dog = new JLabel();
                 status_D.setText(statusDog);
                 image_Dog.setIcon(new ImageIcon(Base_Path + "dog_sleep.png"));
                 sleep(16000);
-
                 statusDog = "WakeUp";
                 picture = "dog_wakeUp";
                 status_D.setText(statusDog);
-//            System.out.println("DOG" + picture);
-                image_Dog.setIcon(new ImageIcon(Base_Path + "dog_wakeUp.png"));
-
+                image_Dog.setIcon(new javax.swing.ImageIcon(Base_Path + "dog_wakeUp.png"));
+                sleep(8000);
             } catch (InterruptedException ex) {
                 T_Human.interrupt();
                 statusDog = "WakeUp";
@@ -458,7 +468,6 @@ class Dog extends Thread {
                 image_Dog.setIcon(new javax.swing.ImageIcon(Base_Path + "dog_wakeUp.png"));
             }
         }
-        Thread.currentThread().stop();
     }
 }
 
@@ -467,8 +476,7 @@ class Polic extends Thread {
     public void run() {
 
         try {
-            status_P = new JLabel();
-            image_polic = new JLabel();
+            image_polic.setIcon(new javax.swing.ImageIcon(Base_Path + "stanby.png"));
             synchronized (T_Polic) {
                 T_Polic.wait();
             }
@@ -476,9 +484,8 @@ class Polic extends Thread {
             statusPolic = "Work";
             picture = "work";
             status_P.setText(statusPolic);
-//            System.out.println(statusPolic);
             image_polic.setIcon(new javax.swing.ImageIcon(Base_Path + "work.png"));
-            JOptionPane.showMessageDialog(null, "ตำรวจจับ", "Polic Dialog", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ตำรวจจับได้วันที่ "+day+"  เวลา  "+i, "Polic Dialog", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
@@ -492,20 +499,16 @@ class Thif extends Thread {
 
                 statusBandit = "Sleep";
                 picture = "dog_sleep";
-                status_B = new JLabel();
-                image_Bandit = new JLabel();
                 status_B.setText(statusDog);
-                image_Bandit.setIcon(new ImageIcon(Base_Path + "dog_sleep.png"));
+                image_Bandit.setIcon(new ImageIcon(Base_Path + "bandit_sleep.png"));
                 sleep(16000);
-
                 statusBandit = "WakeUp";
-                picture = "dog_wakeUp";
+                picture = "bandit_wakeUp";
                 status_B.setText(statusDog);
-//            System.out.println("DOG" + picture);
+                System.out.println(statusDog);
                 image_Bandit.setIcon(new ImageIcon(Base_Path + "bandit_wakeUp.png"));
-
+                sleep(8000);
             } catch (InterruptedException ex) {
-                System.out.println("xxxx");
                 T_Dog.interrupt();
                 statusBandit = "WakeUp";
                 picture = "bandit_wakeUp";
@@ -521,7 +524,7 @@ class Thif extends Thread {
 
 class Clock extends Thread {
 
-    int day = 0;
+    
 
     public void run() {
 

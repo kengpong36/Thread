@@ -23,34 +23,42 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="status_P" min="-2" pref="189" max="-2" attributes="0"/>
-                  <Component id="jPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="status_H" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
-                  <Component id="status_D" min="-2" pref="189" max="-2" attributes="0"/>
-                  <Component id="status_B" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="date" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="time" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
-              <Component id="btnStart" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="status_P" min="-2" pref="189" max="-2" attributes="0"/>
+                          <Component id="jPanel1" max="32767" attributes="0"/>
+                          <Component id="status_H" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
+                          <Component id="jPanel3" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="time" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnStart" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnStop" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
+                      <Component id="status_D" min="-2" pref="189" max="-2" attributes="0"/>
+                      <Component id="status_B" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,46 +66,47 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnStart" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="time" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="date" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnStart" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnStop" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="time" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="status_D" min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="status_H" min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="status_P" min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="status_B" min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="status_D" min="-2" pref="19" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="status_H" min="-2" pref="19" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="status_P" min="-2" pref="19" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="status_B" min="-2" pref="19" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -144,7 +153,7 @@
         <Component class="javax.swing.JLabel" name="image">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(Base_Path+&quot;\\wakeUp.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(Base_Path+&quot;\\home.jpeg&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -156,9 +165,8 @@
           <Font name="Sylfaen" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="statusHuman" type="code"/>
+          <Connection code="&quot;WakeUp&quot;" type="code"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel2">
@@ -202,7 +210,7 @@
         <Component class="javax.swing.JLabel" name="image_Dog">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(Base_Path+&quot;\\dog_sleep.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(Base_Path+&quot;\\home.jpeg&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -216,7 +224,6 @@
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="statusDog" type="code"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel3">
@@ -241,7 +248,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="image_polic" pref="163" max="32767" attributes="0"/>
+                  <Component id="image_polic" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -260,7 +267,7 @@
         <Component class="javax.swing.JLabel" name="image_polic">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(Base_Path+&quot;\\stanby.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(Base_Path+&quot;\\home.jpeg&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -322,7 +329,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="image_Bandit">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="image_Bandit.setIcon(new javax.swing.ImageIcon(Base_Path +&quot;bandit_sleep.png&quot;));"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="image_Bandit.setIcon(new javax.swing.ImageIcon(Base_Path +&quot;home.jpeg&quot;));"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -333,9 +340,8 @@
           <Font name="Sylfaen" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="statusBandit" type="code"/>
+          <Connection code="&quot;Sleep&quot;" type="code"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="status_P">
@@ -346,7 +352,6 @@
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="statusPolic" type="code"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnStart">
@@ -380,6 +385,15 @@
           <Font name="Tempus Sans ITC" size="18" style="1"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnStop">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stop"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnStopMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStopActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
